@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomáš Havránek — research tools</title>
+<meta name="description" content="Free tools that criticise a paper, an ERC or GA UK proposal, or a thesis before it is judged. By Tomáš Havránek, Charles University. Each page hands you a prompt to paste into the chatbot of your choice.">
+<link rel="canonical" href="https://tjhavranek.github.io/">
+<style>
+:root {
+  --bg: #f7f6f2;
+  --ink: #1c2321;
+  --muted: #5b6461;
+  --line: #e2dfd6;
+  --accent: #4a3f8f;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Charter, "Bitstream Charter", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131918;
+    --ink: #e8ecea;
+    --muted: #a2aca8;
+    --line: #2c3734;
+    --accent: #b0a6ef;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  padding: 10vh 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+@media (min-width: 40rem) { body { padding-top: 16vh; } }
+main { max-width: 34rem; margin: 0 auto; }
+h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.lead { color: var(--muted); margin: 0.6rem 0 0; font-size: 1.02rem; max-width: 30rem; }
+ul.tools { list-style: none; margin: 2.75rem 0 0; padding: 0; border-top: 1px solid var(--line); }
+ul.tools li { border-bottom: 1px solid var(--line); }
+ul.tools a {
+  display: block;
+  padding: 1.15rem 0;
+  text-decoration: none;
+  color: inherit;
+}
+.t {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  transition: color .12s ease-in-out;
+}
+.d { display: block; color: var(--muted); font-size: 0.94rem; margin-top: 0.15rem; }
+ul.tools a:hover .t, ul.tools a:focus-visible .t { color: var(--accent); }
+ul.tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+.note { color: var(--muted); font-size: 0.88rem; margin: 1.5rem 0 0; }
+footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; }
+footer p { margin: 0.35rem 0; }
+footer a, .note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
+footer a:hover, footer a:focus-visible, .note a:hover, .note a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Tomáš Havránek</h1>
+  <p class="lead">Economics, Charles University. Tools that criticise a draft before a referee, a panel, or an examiner does.</p>
+
+  <ul class="tools">
+    <li><a href="/research-audit-duel-protocol/">
+      <span class="t">Paper</span>
+      <span class="d">An adversarial audit: four models read it in different roles, then cross-examine each other.</span>
+    </a></li>
+    <li><a href="/erc-ai-feedback/">
+      <span class="t">ERC draft</span>
+      <span class="d">Unofficial pre-review of a Starting or Consolidator proposal, before you submit.</span>
+    </a></li>
+    <li><a href="/gauk-ai-feedback/">
+      <span class="t">GA UK application</span>
+      <span class="d">Unofficial check of a Charles University grant application, in Czech or English.</span>
+    </a></li>
+    <li><a href="/ies-thesis-feedback/">
+      <span class="t">Thesis</span>
+      <span class="d">What your supervisor and opponent are likely to raise, before the seminar.</span>
+    </a></li>
+  </ul>
+
+  <p class="note">Each page hands you a prompt to paste into a chatbot. This site stores nothing; what you paste goes to the provider you choose.</p>
+
+  <footer>
+    <p>Claude Code skills: <a href="https://github.com/tjhavranek/paper-workshop">paper-workshop</a> · <a href="https://github.com/tjhavranek/mad-research">mad-research</a></p>
+    <p>Research: <a href="https://meta-analysis.cz">meta-analysis.cz</a> · <a href="https://meta-analysis.cz/maive/">MAIVE</a></p>
+    <p><a href="https://github.com/tjhavranek">GitHub</a> · <a href="https://scholar.google.com/citations?user=BF0BvBkAAAAJ">Google Scholar</a> · <a href="https://orcid.org/0000-0002-3158-2539">ORCID</a> · <a href="https://www.tomashavranek.cz/">tomashavranek.cz</a></p>
+    <p>Also here: <a href="/race/">a racing game my children made</a>.</p>
+  </footer>
+</main>
+</body>
+</html>
