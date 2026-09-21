@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tomáš Havránek — research tools</title>
-<meta name="description" content="Free tools that criticise a paper, an ERC or GA UK proposal, or a thesis before it is judged. By Tomáš Havránek, Charles University. Each page hands you a prompt to paste into the chatbot of your choice.">
+<meta name="description" content="Free tools that find the problems in a paper, an ERC or GA UK proposal, or a thesis before it is judged. By Tomáš Havránek, Charles University. Each page hands you a prompt to paste into the chatbot of your choice.">
 <link rel="canonical" href="https://tjhavranek.github.io/">
 <style>
 :root {
@@ -68,6 +68,8 @@ ul.tools a {
 ul.tools a:hover .t, ul.tools a:focus-visible .t { color: var(--accent); }
 ul.tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 .note { color: var(--muted); font-size: 0.88rem; margin: 1.5rem 0 0; }
+.section { font-size: 0.78rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 2.9rem 0 0.6rem; }
+ul.tools.more { margin-top: 0; }
 footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; }
 footer p { margin: 0.35rem 0; }
 footer a, .note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
@@ -77,7 +79,7 @@ footer a:hover, footer a:focus-visible, .note a:hover, .note a:focus-visible { c
 <body>
 <main>
   <h1>Tomáš Havránek</h1>
-  <p class="lead">Economics, Charles University. Tools that criticise a draft before a referee, a panel, or an examiner does.</p>
+  <p class="lead">Economics, Charles University. Tools that find the problems in a draft before a referee, a panel, or an examiner does.</p>
 
   <ul class="tools">
     <li><a href="/research-audit-duel-protocol/">
@@ -98,13 +100,27 @@ footer a:hover, footer a:focus-visible, .note a:hover, .note a:focus-visible { c
     </a></li>
   </ul>
 
+  <p class="section">Deeper, on GitHub</p>
+  <ul class="tools more">
+    <li><a href="https://github.com/tjhavranek/paper-workshop">
+      <span class="t">paper-workshop</span>
+      <span class="d">CRUCIBLE: referees from rival traditions argue a paper to the sentence, then rebuild it. Needs Claude Code.</span>
+    </a></li>
+    <li><a href="https://github.com/tjhavranek/mad-research">
+      <span class="t">mad-research</span>
+      <span class="d">Claude and Codex audit a paper against each other, and a fresh model judges what survived. Needs Claude Code and Codex.</span>
+    </a></li>
+    <li><a href="https://github.com/tjhavranek/meta-analysis.cz">
+      <span class="t">meta-analysis.cz</span>
+      <span class="d">Our meta-analyses in full: 71 papers, 46 datasets with 58,405 estimates, and the code. CC BY 4.0.</span>
+    </a></li>
+  </ul>
+
   <p class="note">Each page hands you a prompt to paste into a chatbot. This site stores nothing; what you paste goes to the provider you choose.</p>
 
   <footer>
-    <p>Claude Code skills: <a href="https://github.com/tjhavranek/paper-workshop">paper-workshop</a> · <a href="https://github.com/tjhavranek/mad-research">mad-research</a></p>
-    <p>Research: <a href="https://meta-analysis.cz">meta-analysis.cz</a> · <a href="https://meta-analysis.cz/maive/">MAIVE</a></p>
+    <p>The research itself: <a href="https://meta-analysis.cz">meta-analysis.cz</a> · <a href="https://meta-analysis.cz/maive/">MAIVE</a></p>
     <p><a href="https://github.com/tjhavranek">GitHub</a> · <a href="https://scholar.google.com/citations?user=BF0BvBkAAAAJ">Google Scholar</a> · <a href="https://orcid.org/0000-0002-3158-2539">ORCID</a> · <a href="https://www.tomashavranek.cz/">tomashavranek.cz</a></p>
-    <p>Also here: <a href="/race/">a racing game my children made</a>.</p>
   </footer>
 </main>
 </body>
