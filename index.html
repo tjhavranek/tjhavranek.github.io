@@ -120,6 +120,7 @@
     .repo:hover h3 { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
     .archive { display: grid; grid-template-columns: 12rem minmax(0, 1fr) auto; gap: 2rem; align-items: center; margin-top: 2rem; padding: 1.5rem 1.75rem; background: var(--wash); }
     .archive h2 { font-size: 1.375rem; line-height: 1.3; }
+    .archive h2 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .15em; }
     .archive .eyebrow { display: block; font-family: var(--sans); font-size: .625rem; margin-bottom: .4rem; }
     .archive p { color: var(--muted); font-size: .875rem; }
     .archive > a { font-size: .8125rem; font-weight: 600; white-space: nowrap; }
@@ -281,7 +282,7 @@
         </ul>
       </section>
       <section class="archive" aria-labelledby="archive-title">
-        <h2 id="archive-title"><span class="eyebrow">Open research</span><span class="nowrap">meta-analysis.cz</span></h2>
+        <h2 id="archive-title"><span class="eyebrow">Open research</span><a href="https://meta-analysis.cz/" class="nowrap">meta-analysis.cz</a></h2>
         <p>Full texts, datasets and estimation code for our meta-analyses. Available under CC BY 4.0.</p>
         <a href="https://github.com/tjhavranek/meta-analysis.cz">Browse the repository <span aria-hidden="true">↗</span></a>
       </section>
