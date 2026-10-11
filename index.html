@@ -1,126 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tomas Havranek and Zuzana Irsova — research tools</title>
-<meta name="description" content="Free tools that find the problems in a paper, an ERC or GA UK proposal, or a thesis before it is judged. By Tomas Havranek and Zuzana Irsova, Charles University. Each page hands you a prompt to paste into the chatbot of your choice.">
-<link rel="canonical" href="https://tjhavranek.github.io/">
-<style>
-:root {
-  --bg: #f7f6f2;
-  --ink: #1c2321;
-  --muted: #5b6461;
-  --line: #e2dfd6;
-  --accent: #4a3f8f;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Charter, "Bitstream Charter", Georgia, serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #131918;
-    --ink: #e8ecea;
-    --muted: #a2aca8;
-    --line: #2c3734;
-    --accent: #b0a6ef;
-    color-scheme: dark;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Research tools | Tomas Havranek &amp; Zuzana Irsova</title>
+  <meta name="description" content="Free AI tools for feedback on research papers, ERC proposals, GA UK applications and IES theses. By Tomas Havranek and Zuzana Irsova, Charles University.">
+  <link rel="canonical" href="https://tjhavranek.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tjhavranek.github.io/">
+  <meta property="og:title" content="Research tools | Tomas Havranek &amp; Zuzana Irsova">
+  <meta property="og:description" content="A closer reading, before you submit. Free AI tools for research drafts, from two economists at Charles University, Prague. This site stores nothing.">
+  <meta property="og:site_name" content="Havranek &amp; Irsova · Research tools">
+  <meta property="og:locale" content="en_GB">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f7f6f0;
+      --surface: #fdfcf8;
+      --ink: #202e29;
+      --muted: #58635d;
+      --accent: #285b48;
+      --wash: #eaf0e7;
+      --line: #cbd0c6;
+      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #16211c;
+        --surface: #1b2821;
+        --ink: #eef0e7;
+        --muted: #b3bfb4;
+        --accent: #a8d3b7;
+        --wash: #24372b;
+        --line: #46564a;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 1rem/1.6 var(--sans);
+    }
+    a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    p, h1, h2, h3 { margin: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    .wrap { width: min(100% - 2rem, 68rem); margin-inline: auto; }
+    .skip { position: absolute; left: 1rem; top: -8rem; padding: .65rem 1rem; background: var(--surface); z-index: 1; }
+    .skip:focus { top: 1rem; }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-block: 2rem 1.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .authors { font-family: var(--serif); font-size: 1.375rem; line-height: 1.45; }
+    .authors a { display: block; width: fit-content; color: var(--ink); text-decoration: none; }
+    .authors a:hover { color: var(--accent); text-decoration: underline; }
+    .affiliation { color: var(--muted); text-align: right; font-size: .875rem; line-height: 1.65; }
+    .affiliation span { display: block; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 4rem; align-items: end; padding-block: 3.25rem 2.75rem; }
+    .eyebrow { color: var(--accent); font-size: .75rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.7rem, 5.5vw, 4.5rem); line-height: 1.06; letter-spacing: -.045em; margin-block: .9rem 1.25rem; }
+    h1 span { display: block; }
+    .intro { max-width: 35rem; font-size: 1.125rem; line-height: 1.55; }
+    .credibility { max-width: 36rem; margin-top: .9rem; font-size: .9375rem; color: var(--muted); }
+    .privacy { border-left: 2px solid var(--accent); padding: .15rem 0 .15rem 1.25rem; }
+    .privacy h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: .65rem; }
+    .privacy p { color: var(--muted); font-size: .875rem; }
+    .privacy p + p { margin-top: .65rem; }
+    .privacy strong { color: var(--ink); font-weight: 600; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem 2rem; margin-bottom: 1.25rem; }
+    .section-head h2 { font-size: 1.75rem; line-height: 1.25; }
+    .section-head p { color: var(--muted); font-size: .8125rem; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+    .cards li { min-width: 0; }
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.5rem 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .card:hover, .card:focus-visible { background: var(--wash); border-color: var(--accent); }
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .75rem; }
+    .category { color: var(--muted); font-size: .6875rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .arrow { color: var(--accent); font-size: 1.25rem; line-height: 1; }
+    .card h3 { font-size: 1.75rem; line-height: 1.2; }
+    .card p { color: var(--muted); margin-block: .65rem 1.25rem; max-width: 29rem; font-size: .9375rem; line-height: 1.55; }
+    .action { color: var(--accent); font-size: .8125rem; font-weight: 600; margin-top: auto; text-decoration: underline; text-underline-offset: .25em; }
+    .card:hover .action { text-decoration-thickness: 2px; }
+    .deeper { margin-top: 3rem; }
+    .repo-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .repo-list li { border-bottom: 1px solid var(--line); }
+    .repo {
+      display: grid;
+      grid-template-columns: 12rem minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 2rem;
+      padding-block: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .repo h3 { font-size: 1.375rem; line-height: 1.3; }
+    .repo .code-name { color: var(--muted); display: block; font-family: var(--sans); font-size: .75rem; margin-top: .25rem; }
+    .repo p { color: var(--muted); font-size: .9375rem; line-height: 1.55; }
+    .repo .requirement { display: block; color: var(--accent); font-size: .75rem; margin-top: .4rem; }
+    .repo .action { margin-top: .2rem; white-space: nowrap; }
+    .repo:hover h3 { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
+    .archive { display: grid; grid-template-columns: 12rem minmax(0, 1fr) auto; gap: 2rem; align-items: center; margin-top: 2rem; padding: 1.5rem 1.75rem; background: var(--wash); }
+    .archive h2 { font-size: 1.375rem; line-height: 1.3; }
+    .archive .eyebrow { display: block; font-family: var(--sans); font-size: .625rem; margin-bottom: .4rem; }
+    .archive p { color: var(--muted); font-size: .875rem; }
+    .archive > a { font-size: .8125rem; font-weight: 600; white-space: nowrap; }
+    footer { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem 2rem; padding-block: 2rem 2.5rem; color: var(--muted); font-size: .75rem; }
+    .nowrap { white-space: nowrap; }
+    footer nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+    footer a { display: inline-block; padding-block: .25rem; }
+    @media (max-width: 55rem) {
+      .hero { grid-template-columns: minmax(0, 1fr) 15rem; gap: 2rem; }
+      .repo { grid-template-columns: 10rem minmax(0, 1fr); gap: .6rem 1.5rem; }
+      .repo > .action { grid-column: 2; }
+      .archive { grid-template-columns: 10rem minmax(0, 1fr); gap: .75rem 1.5rem; }
+      .archive > a { grid-column: 2; }
+    }
+    @media (max-width: 40rem) {
+      .masthead { padding-block: 1.25rem; gap: 1rem; }
+      .authors { font-size: 1.125rem; }
+      .affiliation { max-width: 9rem; font-size: .6875rem; }
+      .hero { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-block: 2rem; }
+      h1 { font-size: clamp(2.6rem, 9.4vw, 3.6rem); margin-block: .75rem 1rem; }
+      .intro { font-size: 1rem; }
+      .credibility { font-size: .875rem; }
+      .privacy { padding-left: 1rem; }
+      .privacy h2 { font-family: var(--sans); font-size: .875rem; font-weight: 650; margin-bottom: .4rem; }
+      .privacy p { font-size: .8125rem; }
+      .privacy p + p { margin-top: .35rem; }
+      .section-head { display: block; margin-bottom: 1rem; }
+      .section-head h2 { font-size: 1.5rem; }
+      .section-head p { margin-top: .35rem; }
+      .cards { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+      .card { padding: 1.25rem; }
+      .card h3 { font-size: 1.625rem; }
+      .card p { margin-bottom: 1rem; }
+      .deeper { margin-top: 2.25rem; }
+      .repo { grid-template-columns: minmax(0, 1fr); gap: .65rem; padding-block: 1.25rem; }
+      .repo > .action { grid-column: auto; justify-self: start; }
+      .archive { grid-template-columns: minmax(0, 1fr); gap: .75rem; padding: 1.25rem; }
+      .archive > a { grid-column: auto; justify-self: start; }
+      footer { padding-block: 1.5rem 2rem; }
+    }
+    @media (forced-colors: active) {
+      .card, .privacy, .archive { border: 1px solid CanvasText; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {"@type":"Person","@id":"https://www.tomashavranek.cz/#person","name":"Tomas Havranek","url":"https://www.tomashavranek.cz/"},
+      {"@type":"Person","@id":"https://www.irsova.com/#person","name":"Zuzana Irsova","url":"https://www.irsova.com/"},
+      {
+        "@type":"WebSite","@id":"https://tjhavranek.github.io/#website",
+        "url":"https://tjhavranek.github.io/","name":"Research tools",
+        "description":"Free AI tools for feedback on research drafts, by Tomas Havranek and Zuzana Irsova.",
+        "inLanguage":"en",
+        "author":[{"@id":"https://www.tomashavranek.cz/#person"},{"@id":"https://www.irsova.com/#person"}],
+        "mainEntity":{"@id":"https://tjhavranek.github.io/#tools"}
+      },
+      {
+        "@type":"ItemList","@id":"https://tjhavranek.github.io/#tools","name":"Research tools","numberOfItems":7,
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"item":{"@type":"WebApplication","name":"Paper audit","url":"https://tjhavranek.github.io/research-audit-duel-protocol/","applicationCategory":"EducationalApplication","isAccessibleForFree":true,"description":"Prompts for four models to read a paper in different roles, then challenge one another’s findings."}},
+          {"@type":"ListItem","position":2,"item":{"@type":"WebApplication","name":"ERC draft pre-review","url":"https://tjhavranek.github.io/erc-ai-feedback/","applicationCategory":"EducationalApplication","isAccessibleForFree":true,"description":"An unofficial check of an ERC Starting or Consolidator Grant draft."}},
+          {"@type":"ListItem","position":3,"item":{"@type":"WebApplication","name":"GA UK application","url":"https://tjhavranek.github.io/gauk-ai-feedback/","applicationCategory":"EducationalApplication","isAccessibleForFree":true,"description":"An unofficial check of a Charles University grant application, in Czech or English."}},
+          {"@type":"ListItem","position":4,"item":{"@type":"WebApplication","name":"IES thesis feedback","url":"https://tjhavranek.github.io/ies-thesis-feedback/","applicationCategory":"EducationalApplication","isAccessibleForFree":true,"description":"Feedback on a bachelor’s or master’s thesis at the Institute of Economic Studies, from an idea to a finished draft."}},
+          {"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"CRUCIBLE","alternateName":"paper-workshop","url":"https://github.com/tjhavranek/paper-workshop","applicationCategory":"EducationalApplication","description":"AI referees debate a paper using exact quotes and can help rebuild it on request. Requires Claude Code."}},
+          {"@type":"ListItem","position":6,"item":{"@type":"SoftwareApplication","name":"mad-research","url":"https://github.com/tjhavranek/mad-research","applicationCategory":"EducationalApplication","description":"Claude and Codex cross-examine a draft, then a fresh model judges which criticisms survive. Uses Claude Code and Codex."}},
+          {"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"meta-analysis.cz","url":"https://github.com/tjhavranek/meta-analysis.cz","description":"Full texts, datasets and estimation code for meta-analysis.","license":"https://creativecommons.org/licenses/by/4.0/"}}
+        ]
+      }
+    ]
   }
-}
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0;
-  padding: 10vh 1.25rem 4rem;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-@media (min-width: 40rem) { body { padding-top: 16vh; } }
-main { max-width: 34rem; margin: 0 auto; }
-h1 {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: clamp(2rem, 7vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-.lead { color: var(--muted); margin: 0.6rem 0 0; font-size: 1.02rem; max-width: 30rem; }
-ul.tools { list-style: none; margin: 2.75rem 0 0; padding: 0; border-top: 1px solid var(--line); }
-ul.tools li { border-bottom: 1px solid var(--line); }
-ul.tools a {
-  display: block;
-  padding: 1.15rem 0;
-  text-decoration: none;
-  color: inherit;
-}
-.t {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.3;
-  transition: color .12s ease-in-out;
-}
-.d { display: block; color: var(--muted); font-size: 0.94rem; margin-top: 0.15rem; }
-ul.tools a:hover .t, ul.tools a:focus-visible .t { color: var(--accent); }
-ul.tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
-.note { color: var(--muted); font-size: 0.88rem; margin: 1.5rem 0 0; }
-.section { font-size: 0.78rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 2.9rem 0 0.6rem; }
-ul.tools.more { margin-top: 0; }
-footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.85rem; }
-footer p { margin: 0.35rem 0; }
-footer a, .note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--line); }
-footer a:hover, footer a:focus-visible, .note a:hover, .note a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
-</style>
+  </script>
 </head>
 <body>
-<main>
-  <h1>Tomas Havranek<br>Zuzana Irsova</h1>
-  <p class="lead">Economics, Charles University. Tools that find the problems in a research draft before a referee, a panel, or an examiner does.</p>
-
-  <ul class="tools">
-    <li><a href="/research-audit-duel-protocol/">
-      <span class="t">Paper</span>
-      <span class="d">An adversarial audit: four models read it in different roles, then cross-examine each other.</span>
-    </a></li>
-    <li><a href="/erc-ai-feedback/">
-      <span class="t">ERC draft</span>
-      <span class="d">Unofficial pre-review of a Starting or Consolidator proposal, before you submit.</span>
-    </a></li>
-    <li><a href="/gauk-ai-feedback/">
-      <span class="t">GA UK application</span>
-      <span class="d">Unofficial check of a Charles University grant application, in Czech or English.</span>
-    </a></li>
-    <li><a href="/ies-thesis-feedback/">
-      <span class="t">Thesis</span>
-      <span class="d">What your supervisor and opponent are likely to raise, before the seminar.</span>
-    </a></li>
-  </ul>
-
-  <p class="note">Each page hands you a prompt to paste into a chatbot. This site stores nothing; what you paste goes to the provider you choose.</p>
-
-  <p class="section">Deeper, on GitHub</p>
-  <ul class="tools more">
-    <li><a href="https://github.com/tjhavranek/paper-workshop">
-      <span class="t">paper-workshop</span>
-      <span class="d">CRUCIBLE: referees from rival traditions argue a paper to the sentence, then rebuild it. Needs Claude Code.</span>
-    </a></li>
-    <li><a href="https://github.com/tjhavranek/mad-research">
-      <span class="t">mad-research</span>
-      <span class="d">Claude and Codex audit a paper against each other, and a fresh model judges what survived. Needs Claude Code and Codex.</span>
-    </a></li>
-    <li><a href="https://github.com/tjhavranek/meta-analysis.cz">
-      <span class="t">meta-analysis.cz</span>
-      <span class="d">Our meta-analyses in full: 74 papers, 47 datasets with 58,484 estimates, and the code. CC BY 4.0.</span>
-    </a></li>
-  </ul>
-
-  <footer>
-    <p><a href="https://meta-analysis.cz">meta-analysis.cz</a> · <a href="https://www.tomashavranek.cz/">tomashavranek.cz</a> · <a href="https://www.irsova.com/">irsova.com</a> · <a href="https://github.com/tjhavranek">GitHub</a></p>
-  </footer>
-</main>
+  <a class="skip" href="#tools">Skip to the tools</a>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="authors">
+        <a href="https://www.tomashavranek.cz/">Tomas Havranek</a>
+        <a href="https://www.irsova.com/">Zuzana Irsova</a>
+      </div>
+      <p class="affiliation">Economists<span>Charles University, Prague</span></p>
+    </header>
+    <main>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">AI tools for research</p>
+          <h1>A closer reading.<span>Before you submit.</span></h1>
+          <p class="intro">Get AI feedback on your research draft before formal review.</p>
+          <p class="credibility">We also share 74 papers and 47 datasets through <a href="https://meta-analysis.cz"><span class="nowrap">meta-analysis.cz</span></a>.</p>
+        </div>
+        <aside class="privacy" aria-labelledby="privacy-title">
+          <h2 id="privacy-title">Free tools. Your choice of AI.</h2>
+          <p><strong>This site stores nothing.</strong> The browser tools give you prompts to paste into a chatbot.</p>
+          <p>Your chosen provider receives what you paste. Its fees and data policies apply.</p>
+        </aside>
+      </div>
+      <section id="tools" aria-labelledby="tools-title">
+        <div class="section-head">
+          <h2 id="tools-title">What are you working on?</h2>
+          <p>Browser tools · Nothing to install</p>
+        </div>
+        <ul class="cards">
+          <li>
+            <a class="card" href="https://tjhavranek.github.io/research-audit-duel-protocol/" aria-labelledby="paper-title" aria-describedby="paper-desc">
+              <div class="card-top"><span class="category">Research paper</span><span class="arrow" aria-hidden="true">↗</span></div>
+              <h3 id="paper-title">Paper audit</h3>
+              <p id="paper-desc">Four models read your paper in different roles, then challenge one another’s findings.</p>
+              <span class="action" aria-hidden="true">Open the audit</span>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://tjhavranek.github.io/erc-ai-feedback/" aria-labelledby="erc-title" aria-describedby="erc-desc">
+              <div class="card-top"><span class="category">European Research Council</span><span class="arrow" aria-hidden="true">↗</span></div>
+              <h3 id="erc-title">ERC draft pre‑review</h3>
+              <p id="erc-desc">An unofficial check of a Starting or Consolidator Grant draft, before you submit.</p>
+              <span class="action" aria-hidden="true">Check an ERC draft</span>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://tjhavranek.github.io/gauk-ai-feedback/" aria-labelledby="gauk-title" aria-describedby="gauk-desc">
+              <div class="card-top"><span class="category">Charles University grants</span><span class="arrow" aria-hidden="true">↗</span></div>
+              <h3 id="gauk-title">GA UK application</h3>
+              <p id="gauk-desc">An unofficial check of formal requirements and the project’s contribution. In Czech or English.</p>
+              <span class="action" aria-hidden="true">Check a GA UK application</span>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://tjhavranek.github.io/ies-thesis-feedback/" aria-labelledby="thesis-title" aria-describedby="thesis-desc">
+              <div class="card-top"><span class="category">Institute of Economic Studies</span><span class="arrow" aria-hidden="true">↗</span></div>
+              <h3 id="thesis-title">IES thesis feedback</h3>
+              <p id="thesis-desc">A reading of your bachelor’s or master’s thesis before the seminar, from an idea to a finished draft.</p>
+              <span class="action" aria-hidden="true">Review a thesis</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="deeper" aria-labelledby="deeper-title">
+        <div class="section-head">
+          <h2 id="deeper-title">For a deeper review</h2>
+          <p>Tools on GitHub · Setup required</p>
+        </div>
+        <ul class="repo-list">
+          <li>
+            <a class="repo" href="https://github.com/tjhavranek/paper-workshop" aria-labelledby="crucible-title" aria-describedby="crucible-desc">
+              <h3 id="crucible-title">CRUCIBLE<span class="code-name">paper-workshop</span></h3>
+              <p id="crucible-desc">AI referees debate your paper using exact quotes. On request, the workshop helps rebuild it.<span class="requirement">Requires Claude Code</span></p>
+              <span class="action" aria-hidden="true">View on GitHub ↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/tjhavranek/mad-research" aria-labelledby="mad-title" aria-describedby="mad-desc">
+              <h3 id="mad-title">mad-research</h3>
+              <p id="mad-desc">Claude and Codex cross-examine your draft; a fresh model judges which criticisms survive.<span class="requirement">Uses Claude Code and Codex</span></p>
+              <span class="action" aria-hidden="true">View on GitHub ↗</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="archive" aria-labelledby="archive-title">
+        <h2 id="archive-title"><span class="eyebrow">Open research</span><span class="nowrap">meta-analysis.cz</span></h2>
+        <p>Full texts, datasets and estimation code for our meta-analyses. Available under CC BY 4.0.</p>
+        <a href="https://github.com/tjhavranek/meta-analysis.cz">Browse the repository <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer>
+      <p>AI feedback is a starting point. Check it against your own work.</p>
+      <nav aria-label="More from the authors">
+        <a href="https://www.tomashavranek.cz/">tomashavranek.cz</a>
+        <a href="https://www.irsova.com/">irsova.com</a>
+        <a href="https://meta-analysis.cz">meta-analysis.cz</a>
+        <a href="https://github.com/tjhavranek">GitHub</a>
+      </nav>
+    </footer>
+  </div>
 </body>
 </html>
